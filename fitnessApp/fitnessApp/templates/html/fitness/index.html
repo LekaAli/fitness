@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fitness App</title>
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <script src="{% static 'bootstrap/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/jquery.1.12.4.js' %}"></script>
+    <script src="{% static 'bootstrap/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/jquery-ui.js' %}"></script>
+
+</head>
+
+<body>                                                                                                                                                                                                                                      
+	<div class="container" style="width:100%;margin:0% 0% 0% 0%">
+		
+        <div class="row">
+            <div class="col-xs-0 col-sm-0 col-md-2 col-lg-0 text-center"></div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12 text-center" style="height: 100%;border-radius: 10px;background-color: white;padding-top:25%">
+                
+                <div class="row" style="margin:5px 0px 5px 0px">
+                    <a class="btn bg-primary" href="{% url 'signIn' %}" style="padding:20px 140px 20px 140px;font-weight: bold;">Sign in</a>
+                </div> 
+
+                 <div class="row" style="margin:5px 0px 5px 0px">
+                    <a class="btn bg-primary" href="{% url 'register' %}" style="padding:20px 135px 20px 135px;font-weight: bold;">Register</a>
+                </div> 
+            </div>
+        </div>
+
+	</div>
+
+</body>
+
+</html>
