@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
-	
-	<meta charset="UTF-8">
+
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fitness App</title>
     {% load staticfiles %}
@@ -16,25 +16,32 @@
 
 </head>
 
-<body>                                                                                                                                                                                                                                      
-	<div class="container" style="width:100%;margin:0% 0% 0% 0%">
-		
-        <div class="row">
-            <div class="col-xs-0 col-sm-0 col-md-2 col-lg-0 text-center"></div>
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12 text-center" style="height: 100%;border-radius: 10px;background-color: white;padding-top:25%">
-                
-                <div class="row" style="margin:5px 0px 5px 0px">
-                    <a class="btn bg-primary" href="{% url 'signIn' %}" style="padding:20px 140px 20px 140px;font-weight: bold;">Sign in</a>
-                </div> 
+<body>
 
-                 <div class="row" style="margin:5px 0px 5px 0px">
-                    <a class="btn bg-primary" href="{% url 'register' %}" style="padding:20px 135px 20px 135px;font-weight: bold;">Register</a>
-                </div> 
+    Patient id: {{ value.patient_id }} <br>
+    Patient Name: {{ value.patient_name }} <br>
+    Patient Surname: {{ value.patient_surname }} <br>
+    Patient Health Record:  {{ value.patient_health_record }}
+    
+    <div class="container" style="margin-top: 10%">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <div class="panel panel-primary"><!-- Begin Panel -->
+                    <div class="panel-heading"><strong>Welcome</strong></div>
+                    <div class="panel-body"><!-- Begin Panel Body -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-8 col-xs-offset-0 col-md-offset-2" style="margin-bottom: 5px">
+                                <a class="btn bg-primary" href="{% url 'signIn' %}" style="width: 100%;padding: 10px 0px 10px 0px">Sign in</a>
+                            </div>
+                            <div class="col-xs-12 col-md-8 col-xs-offset-0 col-md-offset-2" style="">
+                                <a class="btn bg-primary" href="{% url 'register' %}" style="width: 100%;padding: 10px 0px 10px 0px">Register</a>
+                            </div>
+                        </div>
+                    </div><!-- End Panel Body -->
+                </div><!-- End Panel -->
             </div>
         </div>
-
-	</div>
-
+    </div>
 </body>
 
 </html>

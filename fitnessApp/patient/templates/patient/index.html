@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div class="container">
+		<form action="{% url 'patient:add' %}" method="post">
+            {% csrf_token %}
+           <label for="firstname">FirstName: </label><input type="text" name="firstname"> <br>
+            <label for="lastname">LastName: </label><input type="text" name="lastname"><br>
+            <label for="identitynumber">Id Number: </label><input type="text" name="identitynumber"><br>
+            <label for="province">Province: </label><select name="province">
+                <option value="Gauteng">Gauteng</option>
+                <option value="Limpopo">Limpopo</option>
+                <option value="North West">North West</option>
+                <option value="Mpumalanga">Mpumalanga</option>
+            </select><br>
+
+            <label for="region">Region: </label><select name="region">
+                <option value="Pretoria">Pretoria</option>
+                <option value="Zebediela">Zebediela</option>
+                <option value="Mahikeng">Mahikeng</option>
+                <option value="Witbank">Witbank</option>
+            </select><br>
+            <label for="location">Location: </label><select name="location">
+                <option value="Mamelodi">Mamelodi</option>
+                <option value="Bolahlakgomo">Bolahlakgomo</option>
+                <option value="Clayville">Clayville</option>
+                <option value="Maletlane">Malelane</option>
+            </select><br>
+            <input type="submit" name="Add" value="Add Patient"> 
+        </form>
+	</div>
+</body>
+
+</html>

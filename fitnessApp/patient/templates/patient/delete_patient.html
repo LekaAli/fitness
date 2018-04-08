@@ -1,0 +1,26 @@
+<form action="{% url 'patient:delete' patient.id %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="firstname" value="{{ patient.firstname }}">
+            <input type="text" name="lastname" value="{{ patient.lastname }}"><br>
+            <input type="text" name="identitynumber" value="{{ patient.identitynumber }}"><br>
+            <select name="province" value="{{ patient.province }}">
+                <option value="Gauteng">Gauteng</option>
+                <option value="Limpopo">Limpopo</option>
+                <option value="North West">North West</option>
+                <option value="Mpumalanga">Mpumalanga</option>
+            </select>
+            <select name="region" value="{{ patient.region }}">
+                <option value="{{ patient.region }}" seletced disabled>{{ patient.region }}</option>
+                <option value="Pretoria">Pretoria</option>
+                <option value="Zebediela">Zebediela</option>
+                <option value="Mahikeng">Mahikeng</option>
+                <option value="Witbank">Witbank</option>
+            </select>
+            <select name="location" value="{{ patient.location }}">
+                <option value="Mamelodi">Mamelodi</option>
+                <option value="Bolahlakgomo">Bolahlakgomo</option>
+                <option value="Clayville">Clayville</option>
+                <option value="Maletlane">Malelane</option>
+            </select><br>
+            <input type="submit" name="submit">
+        </form>

@@ -1,0 +1,27 @@
+<h3>Added Availability</h3>
+<div>
+{{ availability.serviceprovider.firstname }} <br>
+{{ availability.serviceprovider.lastname }} <br>
+{{ availability.institution.name }}	<br>
+{{ availability.status }}  <br>
+
+{% if not availability.weekly %}
+
+	{% if availability.daily == 0 %}
+		<b>Monday</b>
+	{% elif availability.daily == 1 %}
+		<b>Tuesday</b>
+	{% elif availability.daily == 2 %}
+		<b>Wednesday</b>
+	{% elif availability.daily == 3 %}
+		<b>Thursday</b>
+	{% else %}
+		<b>Friday</b>
+	{% endif %}
+
+{% else %}
+
+	{{ availability.weekly }}
+
+{% endif %}
+</div>

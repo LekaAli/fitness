@@ -1,0 +1,30 @@
+<h3>Availability</h3>
+<form action="{% url 'availability:add' %}" method="post">
+{% csrf_token %}
+<select name="serviceprovider">
+	{% for serviceprovider in serviceproviders %}
+	<option value="{{ serviceprovider.firstname }},{{ serviceprovider.lastname }}">{{ serviceprovider.firstname }},{{ serviceprovider.lastname }}</option>
+	{% endfor %}
+</select><br>
+
+<select name="institution">
+	{% for institution in institutions %}
+	<option value="{{ institution.name }}">{{ institution.name }}</option>
+	{% endfor %}
+</select><br>
+
+<select name=availability>
+	<option value=0>Monday</option>
+	<option value=1>Tuesday</option>
+	<option value=2>Wednesday</option>
+	<option value=3>Thursday</option>
+	<option value=4>Friday</option>
+</select><br>
+
+<input type="checkbox" name="availability" value="Weekly"><br>
+
+<input type="text" name="starttime"><br>
+<input type="text" name="endtime"><br>
+<input type="submit" value="Add Availability">
+
+</form>

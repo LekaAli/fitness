@@ -16,15 +16,20 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from . import views
-
+# from patient import urls as patient
+# from institution import urls as institution
+# from referal import urls as referal
+# from serviceProvider import urls as serviceprovider
+# from availability import urls as availability
+# from assignment import urls as assignment
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'sign_in',views.signIn,name='signIn'),
-    url(r'register',views.register,name='register'),
-    url(r'^$',views.index,name="main"),
-    url(r'trainer/',include('trainer.urls')),
-    url(r'specialist/',include('specialist.urls')),
-    url(r'doctor/',include('doctor.urls')),
-
+    url(r'^$',views.index,name='index'),
+    # url(r'^patient/',include(patient),name='patient'),
+    # url(r'^institution/',include(institution),name='institution'),
+    # url(r'^referal/',include(referal),name='referal'),
+    # url(r'^serviceprovider/',include(serviceprovider),name='serviceprovider'),
+    # url(r'^availability/',include(availability),name='availability'),
+    # url(r'^assignment/',include(assignment),name='assignment'),
 ]

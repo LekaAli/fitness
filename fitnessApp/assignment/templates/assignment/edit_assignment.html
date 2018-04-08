@@ -1,0 +1,23 @@
+<h3>Edit Assignment</h3>
+<form action="{% url 'assignment:update' assignment.id %}" method="post">
+	{% csrf_token %}
+	<select name="serviceprovider">
+		{% for sp in serviceprovider %}
+			<option 
+			name="serviceprovider" 
+			value="{{ sp.firstname }},{{ sp.lastname }}">
+			{{ sp.firstname }},{{ sp.lastname }}
+			</option>
+		{% endfor %}
+	</select><br>
+	<select name="institution">
+		{% for inst in institution %}
+			<option 
+			name="institution" 
+			value="{{ inst.name }}">
+			{{ inst.name }}
+			</option>
+		{% endfor %}
+	</select><br>
+	<input type="submit" value="Update Assignment">
+</form>
