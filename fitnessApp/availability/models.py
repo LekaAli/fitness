@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from serviceProvider.models import Serviceprovider
+from serviceprovider.models import Serviceprovider
 from institution.models import Institution
 
 # Create your models here.

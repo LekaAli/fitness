@@ -3,15 +3,15 @@ from django.db import models
 from datetime import datetime
 from patient.models import Patient
 from institution.models import Institution
-from serviceProvider.models import Serviceprovider
+from serviceprovider.models import ServiceProvider
 
-# Create your models here.
+
 class Referal(models.Model):
     id = models.AutoField(primary_key=True)
     referaldate = models.DateField(null=False,default=datetime.now())
     patient = models.ForeignKey(Patient,related_name='patient',on_delete=models.CASCADE)
     institution = models.ForeignKey(Institution,related_name='institution',on_delete=models.CASCADE)
-    serviceprovider = models.ForeignKey(Serviceprovider,related_name='serviceprovider',on_delete=models.CASCADE)
+    serviceprovider = models.ForeignKey(ServiceProvider,related_name='serviceprovider',on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('patient','institution','serviceprovider','referaldate')

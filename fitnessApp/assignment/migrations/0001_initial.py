@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('serviceProvider', '0002_auto_20170628_0416'),
+        ('serviceprovider', '0002_auto_20170628_0416'),
         ('institution', '0003_auto_20170628_1042'),
     ]
 
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('assigndate', models.DateTimeField()),
                 ('institution', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='institution.Institution')),
-                ('serviceprovider', models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='serviceProvider.Serviceprovider')),
+                ('serviceprovider', models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='serviceprovider.Serviceprovider')),
             ],
         ),
     ]

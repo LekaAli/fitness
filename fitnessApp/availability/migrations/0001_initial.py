@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('institution', '0002_auto_20170626_1516'),
-        ('serviceProvider', '0001_initial'),
+        ('serviceprovider', '0001_initial'),
     ]
 
     operations = [
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('until_day', models.DateField()),
                 ('weekly_availability', models.BooleanField(default=False)),
                 ('institution', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='institution.Institution')),
-                ('service_provider', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='serviceProvider.ServiceProvider')),
+                ('service_provider', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='serviceprovider.ServiceProvider')),
             ],
         ),
     ]

@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('serviceProvider', '0002_auto_20170628_0416'),
+        ('serviceprovider', '0002_auto_20170628_0416'),
         ('institution', '0002_auto_20170626_1516'),
         ('patient', '0004_auto_20170627_1414'),
     ]
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('referaldate', models.DateTimeField(verbose_name=datetime.datetime(2017, 6, 28, 10, 31, 54, 865673))),
                 ('institution', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='institution.Institution')),
                 ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='patient.Patient')),
-                ('serviceprovider', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='serviceProvider.Serviceprovider')),
+                ('serviceprovider', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='serviceprovider.Serviceprovider')),
             ],
         ),
     ]

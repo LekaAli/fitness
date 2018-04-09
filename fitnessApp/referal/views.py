@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import serializers
 from .models import Referal
 from patient.models import Patient
-from serviceProvider.models import Serviceprovider
+from serviceprovider.models import Serviceprovider
 from institution.models import Institution
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse

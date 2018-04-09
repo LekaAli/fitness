@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils import timezone
-from serviceProvider.models import Serviceprovider
+from serviceprovider.models import Serviceprovider
 from institution.models import Institution
 from rest_framework import serializers
 

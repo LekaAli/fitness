@@ -35,12 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'institution.apps.InstitutionConfig',
-    # 'patient.apps.PatientConfig',
-    # 'serviceProvider.apps.ServiceproviderConfig',
-    # 'availability.apps.AvailabilityConfig',
-    # 'referal.apps.ReferalConfig',
-    # 'assignment.apps.AssignmentConfig',
-    'fitnessApp',
+    'appointment.apps.AppointmentConfig',
+    'servicerecord.apps.ServicerecordConfig',
+    'patient.apps.PatientConfig',
+    'serviceprovider.apps.ServiceproviderConfig',
+    'referal.apps.ReferalConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

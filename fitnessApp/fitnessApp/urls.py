@@ -19,7 +19,7 @@ from . import views
 # from patient import urls as patient
 # from institution import urls as institution
 # from referal import urls as referal
-# from serviceProvider import urls as serviceprovider
+# from serviceprovider import urls as serviceprovider
 # from availability import urls as availability
 # from assignment import urls as assignment
 

@@ -1,26 +1,89 @@
 from __future__ import unicode_literals
-
 from django.db import models
-from django.utils import timezone
-# Create your models here.
 
-class  Institution(models.Model):
-    CATEGORY = (
-            (0,"General Practitioner"),
-            (1,"Hospital"),
-            (2,"Fitness Centre"),
-            (3,"Clinic"),
-            (4,"School"),
-            )
-    name = models.CharField(max_length=200)
-    location = models.CharField(max_length=200)
-    category = models.IntegerField(max_length=200,choices=CATEGORY)
-    status = models.IntegerField(choices=((0,'created'),(1,'updated'),(2,'deleted')),default=0)
-    creationdate = models.DateField(null=False,default=timezone.now())
 
-    # def __unicode__(self):
-    #     return self.name
-    # def __str__(self):
-    #     return "Institution: " + self.name
-        
-        
+class Region(models.Model):
+    name = models.CharField(max_length=300, default='', unique=True)
+
+    class Meta:
+        verbose_name = 'region'
+        verbose_name_plural = 'regions'
+
+    def __unicode__(self):
+        return self.name
+
+
+class Province(models.Model):
+    name = models.CharField(max_length=128, default='', unique=True)
+    region = models.ManyToManyField(Region, related_name='regions', blank=True)
+
+    class Meta:
+        verbose_name = 'province'
+        verbose_name_plural = 'provinces'
+
+    def __unicode__(self):
+        return self.name
+
+
+class Location(models.Model):
+    name = models.CharField(max_length=128, default='')
+    region = models.ForeignKey(Region, related_name='location', blank=True, null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name ='location'
+        verbose_name_plural = 'locations'
+
+    def __unicode__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=128, default='', unique=True)
+    description = models.CharField(max_length=300, default='')
+
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    def __unicode__(self):
+        return self.name
+
+
+class Institution(models.Model):
+    STATUS = (
+        (0, 'INACTIVE'),
+        (1, 'ACTIVE'),
+        (2, 'DELETED'),
+    )
+    name = models.CharField(max_length=300, default='', db_index=True)
+    province = models.ForeignKey(Province, related_name='institution', blank=True, null=True, on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, related_name='institution', blank=True, null=True, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, related_name='institution', blank=True, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='institution', blank=True, null=True, on_delete=models.CASCADE)
+    status = models.IntegerField(choices=STATUS, default=0)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'institution'
+        verbose_name_plural = 'institutions'
+
+    def __unicode__(self):
+        return self.name
+
+    @property
+    def get_name(self):
+        return self.name
+
+    @get_name.setter
+    def get_name(self, name):
+        self.name = name
+
+    def get_service_provider(self):
+        pass
+
+    def deactivate_service_provider(self):
+        pass
+
+
+

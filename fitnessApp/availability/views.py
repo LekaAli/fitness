@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import serializers
 from .models import Availability
 from institution.models import Institution
-from serviceProvider.models import Serviceprovider
+from serviceprovider.models import Serviceprovider
 from django.urls import reverse
 from django.views import generic
 from django.views import View

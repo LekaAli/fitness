@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('serviceProvider', '0002_auto_20170628_0416'),
+        ('serviceprovider', '0002_auto_20170628_0416'),
         ('availability', '0001_initial'),
     ]
 
@@ -56,6 +56,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='availability',
             name='serviceprovider',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='serviceProvider.Serviceprovider'),
+            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='serviceprovider.Serviceprovider'),
         ),
     ]

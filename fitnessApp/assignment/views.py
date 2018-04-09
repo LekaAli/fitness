@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,HttpResponse
-from serviceProvider.models import Serviceprovider
+from serviceprovider.models import Serviceprovider
 from institution.models import Institution
 from .models import Assignment
 from django.http import HttpResponseRedirect

@@ -48,6 +48,7 @@ class Availability(serializers.Serializer):
         self.availabilty_s_time = availabilty_s_time
         self.availabilty_e_time = availabilty_e_time
 
+
 class AvailabilitySerializer(serializers.Serializer):
 
     sp_identity_key = serializers.CharField(max_length=8)
@@ -67,6 +68,7 @@ class AvailabilitySerializer(serializers.Serializer):
         instance.availabilty_e_time = validated_data.get('availabilty_e_time',instance.availabilty_e_time)
         return instance
 
+
 class InstitutionSerializer(serializers.Serializer):
 
     institution_identity_key = serializers.CharField(max_length=8)
@@ -83,6 +85,7 @@ class InstitutionSerializer(serializers.Serializer):
         instance.institution_type = validated_data.get('institution_type',instance.institution_type)
         instance.institution_location = validated_data.get('institution_location',instance.institution_location)
         return instance
+
 
 class ServiceProviderSerializer(serializers.Serializer):
 
@@ -103,6 +106,7 @@ class ServiceProviderSerializer(serializers.Serializer):
         instance.institution_identity_key = validated_data.get('institution_identity_key',instance.institution_identity_key)
         return instance
 
+
 class PatientSerializer(serializers.Serializer):
     
     patient_id = serializers.CharField(max_length=8)
@@ -120,10 +124,12 @@ class PatientSerializer(serializers.Serializer):
         instance.patient_health_record = validated_data.get('patient_health_record',instance.patient_health_record)
         return instance
 
+
 def validate_referal_comment(value):
         if not value:
             raise serializers.ValidationError("referal Comment Required.")
         return value
+
 
 class ReferalSerializer(serializers.Serializer):
 
@@ -153,4 +159,3 @@ class ReferalSerializer(serializers.Serializer):
         instance.sp_identity_key = validated_data.get('sp_identity_key',instance.sp_identity_key)
         instance.institution_identity_key = validated_data.get('institution_identity_key',instance.institution_identity_key)
         return instance
-        
