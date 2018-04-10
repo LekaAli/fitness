@@ -6,8 +6,8 @@ class Region(models.Model):
     name = models.CharField(max_length=300, default='', unique=True)
 
     class Meta:
-        verbose_name = 'region'
-        verbose_name_plural = 'regions'
+        verbose_name = 'Region'
+        verbose_name_plural = 'Regions'
 
     def __unicode__(self):
         return self.name
@@ -18,8 +18,8 @@ class Province(models.Model):
     region = models.ManyToManyField(Region, related_name='regions', blank=True)
 
     class Meta:
-        verbose_name = 'province'
-        verbose_name_plural = 'provinces'
+        verbose_name = 'Province'
+        verbose_name_plural = 'Provinces'
 
     def __unicode__(self):
         return self.name
@@ -30,8 +30,8 @@ class Location(models.Model):
     region = models.ForeignKey(Region, related_name='location', blank=True, null=True, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name ='location'
-        verbose_name_plural = 'locations'
+        verbose_name = 'Location'
+        verbose_name_plural = 'Locations'
 
     def __unicode__(self):
         return self.name
@@ -42,8 +42,8 @@ class Category(models.Model):
     description = models.CharField(max_length=300, default='')
 
     class Meta:
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __unicode__(self):
         return self.name
@@ -61,12 +61,12 @@ class Institution(models.Model):
     location = models.ForeignKey(Location, related_name='institution', blank=True, null=True, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='institution', blank=True, null=True, on_delete=models.CASCADE)
     status = models.IntegerField(choices=STATUS, default=0)
-    creation_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    modified_date = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
-        verbose_name = 'institution'
-        verbose_name_plural = 'institutions'
+        verbose_name = 'Institution'
+        verbose_name_plural = 'Institutions'
 
     def __unicode__(self):
         return self.name

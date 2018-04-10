@@ -3,7 +3,7 @@ from rest_framework.parsers import JSONParser
 from django.utils.six import BytesIO
 from rest_framework import serializers
 from .models import Patient
-from referal.models import Referal
+# from referal.models import Referal
 
 class PatientModule(object):
     
@@ -30,11 +30,11 @@ class PatientSerializerModule(serializers.Serializer):
         instance.patient_health_record = validated_data.get('patient_health_record',instance.patient_health_record)
         return instance
 
-class PatientSerializer(serializers.ModelSerializer):
-    referal = serializers.StringRelatedField()
-    institution = serializers.StringRelatedField()
-    serviceprovider = serializers.StringRelatedField()
-    class Meta:
-        model = Patient
-        fields = ('firstname','lastname','referal','institution','serviceprovider')
+# class PatientSerializer(serializers.ModelSerializer):
+#     referal = serializers.StringRelatedField()
+#     institution = serializers.StringRelatedField()
+#     serviceprovider = serializers.StringRelatedField()
+#     class Meta:
+#         model = Patient
+#         fields = ('firstname','lastname','referal','institution','serviceprovider')
 

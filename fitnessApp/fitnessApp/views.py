@@ -12,11 +12,12 @@ print decode_serializers.referal()
 # print decode_serializers.availability()
 # print decode_serializers.institution()
 
+
 @require_http_methods(["GET"])
 def index(request):
     # print "REQUEST: ",request.user
     a = serializers.PatientModule(patient_id="100",patient_name="Leka",patient_surname="Tshoane",patient_health_record="Allergic to cold & other type of foods")
-    b = serializers.PatientSerializerModule(a,partial=False)
+    b = serializers.PatientSerializerModule(a, partial=False)
     from rest_framework.renderers import JSONRenderer
     c = JSONRenderer().render(b.data)
     from django.utils.six import BytesIO
@@ -24,11 +25,9 @@ def index(request):
     from rest_framework.parsers import JSONParser
     data = JSONParser().parse(d)
     print data
-    b = serializers.PatientSerializerModule(data=data,partial=False)
+    b = serializers.PatientSerializerModule(data=data, partial=False)
     b.is_valid(raise_exception=True)
 
-    # for i in b.validated_data:
-    #     value =  b.validated_data[i]
     value =  b.validated_data
     print serializers.PatientSerializerModule
     content = {'value':value}

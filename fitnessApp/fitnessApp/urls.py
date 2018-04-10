@@ -25,11 +25,10 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.index,name='index'),
+    url(r'^$', views.index, name='index'),
     # url(r'^patient/',include(patient),name='patient'),
     # url(r'^institution/',include(institution),name='institution'),
     # url(r'^referal/',include(referal),name='referal'),
     # url(r'^serviceprovider/',include(serviceprovider),name='serviceprovider'),
-    # url(r'^availability/',include(availability),name='availability'),
     # url(r'^assignment/',include(assignment),name='assignment'),
 ]

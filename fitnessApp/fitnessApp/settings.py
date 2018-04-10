@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'servicerecord.apps.ServicerecordConfig',
     'patient.apps.PatientConfig',
     'serviceprovider.apps.ServiceproviderConfig',
-    'referal.apps.ReferalConfig',
     'rest_framework',
 ]
 
@@ -81,7 +80,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    # 'default2': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'xe',
+    #     'USER': 'a_user',
+    #     'PASSWORD': 'a_password',
+    #     'HOST': '',
+    #     'PORT': '',
+    #     'CONN_MAX_AGE': 600,
+    #         'client_encoding': 'UTF8',
+    #         'default_transaction_isolation': 'read committed',
+    #         'OPTIONS': {
+    #         },
+    # }
 }
 
 # DATABASES = {
