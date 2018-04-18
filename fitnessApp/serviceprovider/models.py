@@ -5,6 +5,8 @@ from django.db import models
 class ServiceProviderType(models.Model):
     name = models.CharField(max_length=128, default='', unique=True)
     description = models.CharField(max_length=300, default='')
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Serviceprovider Type'
@@ -17,6 +19,8 @@ class ServiceProviderType(models.Model):
 class Speciality(models.Model):
     name = models.CharField(max_length=128, default='', unique=True)
     description = models.CharField(max_length=300, default='')
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Speciality'
@@ -29,6 +33,8 @@ class Speciality(models.Model):
 class Qualification(models.Model):
     name = models.CharField(max_length=128, default='', unique=True)
     description = models.CharField(max_length=300, default='')
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Qualification'
@@ -54,8 +60,8 @@ class ServiceProvider(models.Model):
     email = models.EmailField(blank=True, null=True)
     contact_number = models.IntegerField(blank=True, null=True)
     alternate_number = models.IntegerField(blank=True, null=True)
-    creation_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    modified_date = models.DateTimeField(auto_now=True, blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    modified = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Service Provider'
@@ -82,8 +88,8 @@ class Availability(models.Model):
                                          blank=True, null=True, on_delete=models.CASCADE)
     institution = models.ForeignKey('institution.Institution', related_name='daily_availability', blank=True,
                                     null=True, on_delete=models.CASCADE)
-    created_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Daily Availability'

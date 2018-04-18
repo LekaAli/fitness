@@ -1,17 +1,25 @@
 from __future__ import unicode_literals
-
 from django.db import models
-from django.utils import timezone
-from serviceprovider.models import Serviceprovider
+from serviceprovider.models import ServiceProvider
 from institution.models import Institution
-from rest_framework import serializers
+
 
 class Assignment(models.Model):
-    
-    date = models.DateField(null=False,default=timezone.now())
-    serviceprovider = models.ForeignKey(Serviceprovider,related_name='assignment',on_delete=models.CASCADE)
-    institution = models.ForeignKey(Institution,on_delete=models.CASCADE)
-    status = models.IntegerField(choices=((0,'active'),(1,'inactive')),default=0)
+    STATUS_OPTIONS = (
+        (0, 'ACTIVE'),
+        (1, 'INACTIVE')
+    )
+    service_provider = models.ForeignKey(ServiceProvider, related_name='assignment', blank=True, null=True,
+                                         on_delete=models.CASCADE)
+    institution = models.ForeignKey(Institution, related_name='assignment', blank=True, null=True,
+                                    on_delete=models.CASCADE)
+    status = models.IntegerField(choices=STATUS_OPTIONS, default=0)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Assignment'
+        verbose_name_plural = 'Assignments'
 
     def __unicode__(self):
-        return '%d: %s' % (self.id,str(self.institution.name))
+        return '%s - %s - %s' % (self.service_provider, self.institution, self.status)

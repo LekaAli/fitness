@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 from django.db import models
-from rest_framework import serializers
 
 
 class Relationship(models.Model):
@@ -19,7 +18,10 @@ class NextOfKin(models.Model):
     first_name = models.CharField(max_length=128, default='')
     last_name = models.CharField(max_length=128, default='')
     contact_number = models.IntegerField()
-    relationship = models.ForeignKey(Relationship, related_name='next_of_kin', blank=True, null=True, on_delete=models.CASCADE)
+    relationship = models.ForeignKey(Relationship, related_name='next_of_kin', blank=True, null=True,
+                                     on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'next of kin'
@@ -47,8 +49,8 @@ class Patient(models.Model):
     next_of_kin = models.ForeignKey(NextOfKin, related_name='patient', blank=True, null=True, on_delete=models.CASCADE)
     contact_number = models.IntegerField()
     status = models.IntegerField(choices=PATIENT_STATUS, default=0)
-    creation_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'patient'
@@ -65,4 +67,33 @@ class Patient(models.Model):
         pass
 
 
+class RequestDoctorVisit(models.Model):
+    patient = models.ForeignKey(Patient, related_name='request_doctor_visit', blank=True, null=True,
+                                on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'Request Doctor Visit'
+        verbose_name_plural = 'Request Doctor Visits'
+
+    def __unicode__(self):
+        return self.patient
+
+
+class ConfirmedDoctorVisit(models.Model):
+    patient = models.ForeignKey(Patient, related_name='doctor_visit', blank=True, null=True, on_delete=models.CASCADE)
+    service_provider = models.ForeignKey('serviceprovider.ServiceProvider', related_name='doctor_visit', blank=True,
+                                         null=True, on_delete=models.CASCADE)
+    institution = models.ForeignKey('institution.Institution', related_name='doctor_visit', blank=True, null=True,
+                                    on_delete=models.CASCADE)
+    appointment = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Confirmed Doctor Visit'
+        verbose_name_plural = 'Confirmed Doctor Visits'
+
+    def __unicode__(self):
+        return '%s - %s' % (self.patient, self.service_provider)

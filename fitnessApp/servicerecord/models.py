@@ -12,7 +12,8 @@ class ServiceRecord(models.Model):
                                     on_delete=models.CASCADE)
     service_provider = models.ForeignKey('serviceprovider.ServiceProvider', related_name='service_record', blank=True,
                                          null=True, on_delete=models.CASCADE)
-    appointment_date = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Service Record'
